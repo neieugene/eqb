@@ -4,7 +4,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         client = Client.create(:idvk => request.env["omniauth.auth"].extra.raw_info.id, :first_name => request.env["omniauth.auth"].extra.raw_info.first_name, :last_name => request.env["omniauth.auth"].extra.raw_info.last_name, :photo => request.env["omniauth.auth"].extra.raw_info.photo_100)
         client.save
     else
-    	client = Client.find(:idvk => request.env["omniauth.auth"].extra.raw_info.id)
+    	client = Client.where(:idvk => request.env["omniauth.auth"].extra.raw_info.id)
     end
     #session["current_client"] = client
     redirect_to "/clients"
