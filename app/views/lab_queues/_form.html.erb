@@ -1,0 +1,27 @@
+<%= form_with(model: lab_queue, local: true) do |form| %>
+  <% if lab_queue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(lab_queue.errors.count, "error") %> prohibited this lab_queue from being saved:</h2>
+
+      <ul>
+      <% lab_queue.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :lab_queue_name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.date_select :date, id: :lab_queue_date %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,2 @@
+module LabQueuesHelper
+end

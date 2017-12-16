@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :lab_queues
   resources :clients
   namespace :users do
     get 'omniauth_callbacks/vkontakte'
