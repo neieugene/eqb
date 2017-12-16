@@ -6,7 +6,7 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else
     	client = Client.where(:idvk => request.env["omniauth.auth"].extra.raw_info.id)
     end
-    session["current_client"] = client
+    session[:current_client] = client
     redirect_to "/clients"
   end
 end
