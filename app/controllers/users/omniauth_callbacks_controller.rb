@@ -8,6 +8,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
     session[:current_client_id] = Client.where(:idvk => request.env["omniauth.auth"].extra.raw_info.id).first.id
     session[:current_client_vkid] = request.env["omniauth.auth"].extra.raw_info.id
-    #redirect_to "/lab_queues"
+    redirect_to "/lab_queues"
   end
 end
