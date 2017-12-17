@@ -5,6 +5,7 @@ class LabQueuesController < ApplicationController
   # GET /lab_queues.json
   def index
     @lab_queues = LabQueue.all
+    @vkid = session[:current_user_vkid]
   end
 
   # GET /lab_queues/1
