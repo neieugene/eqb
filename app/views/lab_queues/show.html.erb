@@ -37,11 +37,15 @@
   </tbody>
 </table>
 
-<h2>Войти в Очередь</h2>
-<%= form_with(model: [ @lab_queue, @lab_queue.clients.build ], local: true) do |form| %>
-  <p>
-    <%= form.submit %>
-  </p>
+<% if (session[:current_client_vkid] != nil) %>
+	<h2>Войти в Очередь</h2>
+	<%= form_with(model: [ @lab_queue, @lab_queue.clients.build ], local: true) do |form| %>
+  		<p>
+    	<%= form.submit %>
+  	</p>
+	<% end %>
+<% else %>
+  <h2>Авторизуйтесь чтобы войти в очередь</h2>
 <% end %>
 
 
