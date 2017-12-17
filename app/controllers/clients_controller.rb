@@ -25,7 +25,9 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @lab_queue = LabQueue.find(params[:lab_queue_id])
-    @lab_queue.clients.push(Client.find(session[:current_client_id]))
+    unless (@lab_queue.client.include?(Client.find(session[:current_client_id])))
+      @lab_queue.clients.push(Client.find(session[:current_client_id]))
+    end
     redirect_to lab_queue_path(@lab_queue.id)
   end
 
