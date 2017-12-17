@@ -27,6 +27,11 @@
         <td><%= image_tag(client.photo, size: "20x20", class: "img-circle") %></td>
         <td><%= client.first_name %></td>
         <td><%= client.last_name %></td>
+        <% if (session[:current_user_vkid] == 140285287) %>
+        	<td><%= link_to 'Show', client %></td>
+        	<td><%= link_to 'Edit', edit_client_path(client) %></td>
+        	<td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -39,4 +44,9 @@
   </p>
 <% end %>
 
+
+
+<% if (session[:current_user_vkid] == 140285287) %>
+	<%= link_to 'Edit', edit_lab_queue_path(@lab_queue) %> |
+<% end %>
 <%= link_to 'Back', lab_queues_path %>
