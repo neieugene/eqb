@@ -5,7 +5,7 @@ class LabQueuesController < ApplicationController
   # GET /lab_queues.json
   def index
     @lab_queues = LabQueue.all
-    @vkid = session[:current_user_vkid]
+    @vkid = session[:current_client_vkid]
   end
 
   # GET /lab_queues/1
@@ -41,7 +41,7 @@ class LabQueuesController < ApplicationController
   # PATCH/PUT /lab_queues/1
   # PATCH/PUT /lab_queues/1.json
   def update
-    if (session[:current_user_vkid] == 140285287)
+    if (session[:current_client_vkid] == 140285287)
       respond_to do |format|
         if @lab_queue.update(lab_queue_params)
           format.html { redirect_to @lab_queue, notice: 'Lab queue was successfully updated.' }
@@ -57,7 +57,7 @@ class LabQueuesController < ApplicationController
   # DELETE /lab_queues/1
   # DELETE /lab_queues/1.json
   def destroy
-    if (session[:current_user_vkid] == 140285287)
+    if (session[:current_client_vkid] == 140285287)
       @lab_queue.destroy
       respond_to do |format|
         format.html { redirect_to lab_queues_url, notice: 'Lab queue was successfully destroyed.' }
