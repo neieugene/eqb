@@ -28,7 +28,7 @@ class ClientsController < ApplicationController
     unless (@lab_queue.clients.include?(Client.find(session[:current_client_id])))
       @lab_queue.clients.push(Client.find(session[:current_client_id]))
     end
-    redirect_to lab_queue_path(@lab_queue.id)
+    redirect_to lab_queue_path(@lab_queue)
   end
 
   # PATCH/PUT /clients/1
