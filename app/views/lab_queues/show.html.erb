@@ -27,9 +27,6 @@
         <td><%= image_tag(client.photo, size: "20x20", class: "img-circle") %></td>
         <td><%= client.first_name %></td>
         <td><%= client.last_name %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
