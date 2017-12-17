@@ -17,13 +17,15 @@
         <td><%= lab_queue.name %></td>
         <td><%= lab_queue.date %></td>
         <td><%= link_to 'Show', lab_queue %></td>
-        
         <td><%= link_to 'Edit', edit_lab_queue_path(lab_queue) %></td>
         <td><%= link_to 'Destroy', lab_queue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
+<h1>session["current_user_vkid"]</h1>
+<%= session["current_user_vkid"] %>
 
 <br>
 
