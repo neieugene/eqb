@@ -26,9 +26,7 @@ class ClientsController < ApplicationController
   def create
     @lab_queue = LabQueue.find(params[:lab_queue_id])
     unless (@lab_queue.clients.include?(Client.find(session[:current_client_id])))
-      if (session[:current_client_id]) != nil)
-        @lab_queue.clients.push(Client.find(session[:current_client_id]))
-      end
+      @lab_queue.clients.push(Client.find(session[:current_client_id]))
     end
     redirect_to lab_queue_path(@lab_queue.id)
   end
