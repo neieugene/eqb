@@ -26,7 +26,7 @@ class ClientsController < ApplicationController
   def create
     @lab_queue = LabQueue.find(params[:lab_queue_id])
     @lab_queue.clients.push(session["current_client"])
-    redirect_to lab_queue_path(@lab_queue)
+    redirect_to lab_queue_path(@lab_queue.id)
   end
 
   # PATCH/PUT /clients/1
