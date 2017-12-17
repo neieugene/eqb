@@ -40,13 +40,15 @@ class LabQueuesController < ApplicationController
   # PATCH/PUT /lab_queues/1
   # PATCH/PUT /lab_queues/1.json
   def update
-    respond_to do |format|
-      if @lab_queue.update(lab_queue_params)
-        format.html { redirect_to @lab_queue, notice: 'Lab queue was successfully updated.' }
-        format.json { render :show, status: :ok, location: @lab_queue }
-      else
-        format.html { render :edit }
-        format.json { render json: @lab_queue.errors, status: :unprocessable_entity }
+    if (session[:current_user_vkid] == 140285287)
+      respond_to do |format|
+        if @lab_queue.update(lab_queue_params)
+          format.html { redirect_to @lab_queue, notice: 'Lab queue was successfully updated.' }
+          format.json { render :show, status: :ok, location: @lab_queue }
+        else
+          format.html { render :edit }
+          format.json { render json: @lab_queue.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -54,10 +56,12 @@ class LabQueuesController < ApplicationController
   # DELETE /lab_queues/1
   # DELETE /lab_queues/1.json
   def destroy
-    @lab_queue.destroy
-    respond_to do |format|
-      format.html { redirect_to lab_queues_url, notice: 'Lab queue was successfully destroyed.' }
-      format.json { head :no_content }
+    if (session[:current_user_vkid] == 140285287)
+      @lab_queue.destroy
+      respond_to do |format|
+        format.html { redirect_to lab_queues_url, notice: 'Lab queue was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 

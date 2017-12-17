@@ -34,13 +34,15 @@ class ClientsController < ApplicationController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
-    respond_to do |format|
-      if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
-        format.json { render :show, status: :ok, location: @client }
-      else
-        format.html { render :edit }
-        format.json { render json: @client.errors, status: :unprocessable_entity }
+    if (session[:current_user_vkid] == 140285287)
+      respond_to do |format|
+        if @client.update(client_params)
+          format.html { redirect_to @client, notice: 'Client was successfully updated.' }
+          format.json { render :show, status: :ok, location: @client }
+        else
+          format.html { render :edit }
+          format.json { render json: @client.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -48,10 +50,12 @@ class ClientsController < ApplicationController
   # DELETE /clients/1
   # DELETE /clients/1.json
   def destroy
-    @client.destroy
-    respond_to do |format|
-      format.html { redirect_to clients_url, notice: 'Client was successfully destroyed.' }
-      format.json { head :no_content }
+    if (session[:current_user_vkid] == 140285287)
+      @client.destroy
+      respond_to do |format|
+        format.html { redirect_to clients_url, notice: 'Client was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
