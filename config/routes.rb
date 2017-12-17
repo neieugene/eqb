@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :lab_queues
-  resources :clients
+  resources :lab_queues do
+    resources :clients
+  end
   namespace :users do
     get 'omniauth_callbacks/vkontakte'
   end
@@ -8,7 +9,6 @@ Rails.application.routes.draw do
     root to: "devise/sessions#new"
   end
 
-  resources :humen
   devise_for :users,
     controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
     

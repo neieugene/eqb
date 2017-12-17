@@ -10,5 +10,17 @@
   <%= @lab_queue.date %>
 </p>
 
+<h2>Список</h2>
+<% @lab_queue.clients.each do |client| %>
+	<%= client.inspect %>
+<% end %>
+
+<h2>Войти в Очередь</h2>
+<%= form_with(model: [ @lab_queue, @lab_queue.clients.build ], local: true) do |form| %>
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_lab_queue_path(@lab_queue) %> |
 <%= link_to 'Back', lab_queues_path %>

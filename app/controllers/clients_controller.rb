@@ -24,17 +24,9 @@ class ClientsController < ApplicationController
   # POST /clients
   # POST /clients.json
   def create
-    @client = Client.new(client_params)
-
-    respond_to do |format|
-      if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-        format.json { render :show, status: :created, location: @client }
-      else
-        format.html { render :new }
-        format.json { render json: @client.errors, status: :unprocessable_entity }
-      end
-    end
+    @lab_queue = LabQueue.find(params[:lab_queue_id])
+    @lab_queue.clients.push(session["current_client"])
+    redirect_to lab_queue_path(@lab_queue)
   end
 
   # PATCH/PUT /clients/1
