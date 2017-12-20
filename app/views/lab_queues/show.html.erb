@@ -26,6 +26,7 @@
       <th></th>
       <th>Имя</th>
       <th>Фамилия</th>
+      <th>Время записи</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -34,13 +35,14 @@
   	<% i = 0 %>
     <% @lab_queue.clients.each do |client| %>
       <tr>
-        <% ticket = client.tickets.where(:client_id => client.id, :lab_queue_id => @lab_queue.id).first %>
+        <% ticket = Ticket.where(:client_id => client.id, :lab_queue_id => @lab_queue.id).first %>
         <%= ticket.inspect %>
       	<% i += 1 %>
       	<td><%= i %></td>
         <td><%= image_tag(client.photo, size: "20x20", class: "img-circle") %></td>
         <td><%= client.first_name %></td>
         <td><%= client.last_name %></td>
+        <td><%= ticket.time %></td>
       </tr>
     <% end %>
   </tbody>
