@@ -25,6 +25,8 @@
   	<% i = 0 %>
     <% @lab_queue.clients.each do |client| %>
       <tr>
+        <% ticket = client.relationships.where(:client_id => client.id, :lab_queue_id => @lab_queue.id).first %>
+        <%= ticket.inspect %>
       	<% i += 1 %>
       	<td><%= i %></td>
         <td><%= image_tag(client.photo, size: "20x20", class: "img-circle") %></td>
