@@ -35,7 +35,7 @@
   	<% i = 0 %>
     <% @lab_queue.clients.each do |client| %>
       <tr>
-        <% ticket = Ticket.where(client_id: client.id, lab_queue_id: @lab_queue.id).first %>
+        <% ticket = Ticket.find_by(client_id: client.id, lab_queue_id: @lab_queue.id).first %>
         <%= ticket.inspect %>
       	<% i += 1 %>
       	<td><%= i %></td>
