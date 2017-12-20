@@ -33,11 +33,12 @@
 
   <tbody>
   	<% i = 0 %>
-    <% @lab_queue.clients.each do |client| %>
+    <% tickets = Tickets.where(lab_queue_id: @lab_queue.id) %>
+    <% tickets.sort_by {|ticket| ticket.time} %>
+    <% tickets.each do |ticket| %>
       <tr>
-        <% ticket = Ticket.find_by(client_id: client.id, lab_queue_id: @lab_queue.id) %>
-        <%= ticket.inspect %>
-      	<% i += 1 %>
+        <% i += 1 %>
+        <% client = ticket.client %>
       	<td><%= i %></td>
         <td><%= image_tag(client.photo, size: "20x20", class: "img-circle") %></td>
         <td><%= client.first_name %></td>
