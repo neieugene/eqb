@@ -1,21 +1,13 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Название:</strong>
   <%= @lab_queue.name %>
 </p>
 
 <p>
-  <strong>Date:</strong>
+  <strong>Дата:</strong>
   <%= @lab_queue.date %>
-</p>
-
-<p>
-  <strong>Tickets:</strong>
-  <% tickets = Ticket.all %>
-  <% tickets.each do |ticket| %>
-    <%= ticket.inspect %><br>
-  <% end %>
 </p>
 
 <h2>Список</h2>
