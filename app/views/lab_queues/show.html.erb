@@ -12,7 +12,7 @@
 
 <p>
   <strong>Tickets:</strong>
-  <% tickets = Tickets.all %>
+  <% tickets = Ticket.all %>
   <% tickets.each do |ticket| %>
     <%= ticket.inspect %>
   <% end %>
