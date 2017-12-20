@@ -25,10 +25,10 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @lab_queue = LabQueue.find(params[:lab_queue_id])
-    unless (@lab_queue.clients.include?(Client.find(session[:current_client_id])))
+ #   unless (@lab_queue.clients.include?(Client.find(session[:current_client_id])))
       ticket = Ticket.new(:client_id => Client.find(session[:current_client_id]), :lab_queue_id => params[:lab_queue_id], :time => Time.now.to_i)
       ticket.save
-    end
+  #  end
     redirect_to lab_queue_path(@lab_queue)
   end
 
