@@ -10,6 +10,14 @@
   <%= @lab_queue.date %>
 </p>
 
+<p>
+  <strong>Tickets:</strong>
+  <% tickets = Tickets.all %>
+  <% tickets.each do |ticket| %>
+    <%= ticket.inspect %>
+  <% end %>
+</p>
+
 <h2>Список</h2>
 <table>
   <thead>
