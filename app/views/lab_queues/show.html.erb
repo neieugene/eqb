@@ -33,7 +33,7 @@
 
   <tbody>
   	<% i = 0 %>
-    <% tickets = Tickets.where(lab_queue_id: @lab_queue.id) %>
+    <% tickets = Ticket.where(lab_queue_id: @lab_queue.id) %>
     <% tickets.sort_by {|ticket| ticket.time} %>
     <% tickets.each do |ticket| %>
       <tr>
