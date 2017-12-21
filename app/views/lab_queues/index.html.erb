@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lab Queues</h1>
+<h1>Очереди</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Date</th>
+      <th>Название</th>
+      <th>Дата</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,10 +16,10 @@
       <tr>
         <td><%= lab_queue.name %></td>
         <td><%= lab_queue.date %></td>
-        <td><%= link_to 'Show', lab_queue %></td>
+        <td><%= link_to 'Показать', lab_queue %></td>
         <% if (session[:current_client_vkid] == 140285287) %>
-        <td><%= link_to 'Edit', edit_lab_queue_path(lab_queue) %></td>
-        <td><%= link_to 'Destroy', lab_queue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Редактировать', edit_lab_queue_path(lab_queue) %></td>
+        <td><%= link_to 'Удалить', lab_queue, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
     <% end %>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Lab Queue', new_lab_queue_path %>
+<%= link_to 'Создать новую очередь', new_lab_queue_path %>
