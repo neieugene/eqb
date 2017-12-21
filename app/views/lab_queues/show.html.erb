@@ -44,7 +44,7 @@
 <% if (session[:current_client_vkid] != nil) %>
 	<%= form_with(model: [ @lab_queue, @lab_queue.clients.build ], local: true) do |form| %>
   		<p>
-    	<%= form.submit, "Войти в очередь" %>
+    	<%= form.submit "Войти в очередь" %>
   	</p>
 	<% end %>
 <% else %>
